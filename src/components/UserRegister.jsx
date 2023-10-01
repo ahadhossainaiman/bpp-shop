@@ -6,6 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase/firebase.config";
 import { setUser } from "../redux/auth/action";
 import updateProfile from "../redux/auth/thunk/authUpdateProfile";
+import { Link } from "react-router-dom";
 
 
 const UserRegister = () => {
@@ -22,7 +23,7 @@ const UserRegister = () => {
       const onSubmit = (data)=>{
         console.log(data);
         dispatch(createUser(data))
-        dispatch(updateProfile(data.fullName,data.imgUrl,data.phoneNumber))
+        dispatch(updateProfile(data,data.fullName,data.imgUrl,data.phoneNumber))
         reset()
 
       }
@@ -81,6 +82,9 @@ const UserRegister = () => {
           <input type="password" placeholder="password" className="input input-bordered"  {...register("password",{required:true})}/>
           <label className="label">
             <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+          </label>
+          <label className="label">
+            <Link to='/login' className="label-text-alt link link-hover">Already Register?</Link>
           </label>
         </div>
         <div className="form-control mt-6">

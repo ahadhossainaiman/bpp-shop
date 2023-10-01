@@ -8,6 +8,7 @@ const initialState = {
 const authReducer = (state = initialState, action) => {
   switch (action.type) {
     case SIGN_UP_SUCCESS:
+      console.log(action.payload);
       return {
         ...state,
         user: { ...action.payload },
@@ -15,17 +16,19 @@ const authReducer = (state = initialState, action) => {
       };
     case SIGN_UP_FAILURE:
       return {
-        ...state,
-        user: null,
-        error: null,
+        ...state
       };
     case SET_USER:
       return {
         ...state,
         user: { ...action.payload },
       };
-    case SIGN_IN_SUCCESS:return {
-        ...state,user:{
+    case SIGN_IN_SUCCESS:
+    console.log(action.payload);  
+    return {
+      ...state,
+       user:{
+          
             ...action.payload
         },
         error:null
@@ -33,7 +36,7 @@ const authReducer = (state = initialState, action) => {
     case SIGN_IN_FAILURE:
     case SIGN_OUT_FAILURE:  
         return {
-            ...state,user:null,error:action.payload
+            ...state,error:action.payload
         } 
     case SIGN_OUT_SUCCESS:
       return{

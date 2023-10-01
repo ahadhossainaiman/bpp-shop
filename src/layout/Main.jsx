@@ -1,16 +1,19 @@
+/* eslint-disable react/jsx-key */
 import { Link, Outlet } from "react-router-dom";
 import NavbarWithDropDawn from "../shared/NavbarWithDropDawn";
 import { useSelector } from "react-redux";
 import cart from '../assets/animation_ln6ywgzg.json';
 import Lottie from "lottie-react";
 
+
 const Main = () => {
   const carts = useSelector((state) => state.cart);
+ 
   return (
     <div className="relative">
       <NavbarWithDropDawn />
       <Outlet />
-      <Link to='/cart' className="dropdown dropdown-end fixed top-1/2  left-0 right-0 bg-yellow-200 w-14 rounded-md">
+      <Link to='/cart' className="dropdown dropdown-end fixed top-1/2 right-0 bg-yellow-200 w-14 rounded-md">
         <label tabIndex={0} className="btn btn-ghost btn-circle">
           <div className="indicator">
             

@@ -4,7 +4,7 @@
 import { signUpFailure, signUpSuccess } from "../action";
 
 import {auth} from "../../../firebase/firebase.config";
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updateCurrentUser } from "firebase/auth";
 
 
 const createUser = (data)=>{
@@ -17,7 +17,7 @@ const createUser = (data)=>{
            user.user.displayName =fullName,
            user.user.photoURL=imgUrl,
            user.user.phoneNumber = phoneNumber
-
+       
             dispatch(signUpSuccess(user.user))
             
         }catch (error){
