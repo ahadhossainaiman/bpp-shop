@@ -1,9 +1,16 @@
 /* eslint-disable react/prop-types */
-import { useState } from "react";
+import { useRef, useState } from "react";
 // import RenderSubCategory from "./renderSubCategory";
 
 const SideDropdownMenu = ({ categories }) => {
   console.log(categories);
+  const getDiv = useRef();
+
+  const handleClick = () => {
+    // Change the background color of the div
+    console.log(getDiv.current);
+  };
+  // console.log(getDiv.current.style.backgroundColor = 'yellow');
   // const [expandedCategories, setExpandedCategories] = useState([]);
   const [openCategories, setOpenCategories] = useState([]);
   // const [openCategory, setOpenCategory] = useState(null);
@@ -18,13 +25,6 @@ const SideDropdownMenu = ({ categories }) => {
     }
   };
     
-  
-
-  
-
-
-  
-
   const renderCategory = (category) => {
     const isExpanded = openCategories.includes(category.id);
  
@@ -39,7 +39,7 @@ const SideDropdownMenu = ({ categories }) => {
           } flex items-center border-b-2 border-yellow-500 my-1`}
           onClick={() => toggleCategory(category.id)}
         >
-          <div className="w-10 mx-3">
+          <div ref={getDiv} onClick={handleClick} className="w-10 mx-3">
             <img
               src={`https://backend.bppshop.com.bd/storage/category/${category.icon}`}
               alt=""

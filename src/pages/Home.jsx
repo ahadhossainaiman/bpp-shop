@@ -15,7 +15,7 @@ const Home = () => {
   }, [dispatch]);
 
   useEffect(() => {
-    fetch(`https://backend.bppshop.com.bd/api/v1/categories`)
+    fetch(`https:/api/categories`)
       .then((res) => res.json())
       .then((data) => setProductCategory(data.data));
   }, []);
